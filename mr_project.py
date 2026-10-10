@@ -25,7 +25,7 @@ margin-bottom:25px
 </div>
 """,unsafe_allow_html=True)
 
-st.sidebar.image("926015_passport_photo.png")
+st.sidebar.image("926015_passport_photo.PNG")
 st.sidebar.title("About us")
 st.sidebar.text("we are developing ml projects based on NLP ")
 st.sidebar.title("About Projects")
