@@ -41,4 +41,4 @@ if st.button("Predict",key="b1"):
         mid=df.loc[i].values[0]
         resp=requests.get(" http://www.omdbapi.com/?i={mid}&apikey=443f1039")
         data=resp.json()
-        st.image.sidebar(data['Poster'],width=300)
+        st.image(data['Poster'],width=300)
