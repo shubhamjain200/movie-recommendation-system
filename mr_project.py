@@ -1,5 +1,6 @@
 import streamlit as st
 import joblib
+import requests
 model=joblib.load("model.pkl")
 vectors=joblib.load("vectors.pkl")
 df=joblib.load("dataframe.pkl")
@@ -24,7 +25,7 @@ margin-bottom:25px
 </div>
 """,unsafe_allow_html=True)
 
-st.sidebar.image("926015_passport_photo.PNG")
+st.sidebar.image("926015_passport_photo.png")
 st.sidebar.title("About us")
 st.sidebar.text("we are developing ml projects based on NLP ")
 st.sidebar.title("About Projects")
@@ -37,4 +38,7 @@ if st.button("Predict",key="b1"):
     distance,indexes=model.kneighbors(vectors[index].toarray())
     for i in indexes[0][1:]:
         st.text(df.loc[i].values[1])
-        
+        mid=df.loc[i].values[0]
+        resp=requests.get(" http://www.omdbapi.com/?i={mid}&apikey=443f1039")
+        data=resp.json()
+        st.image.sidebar(data['Poster'],width=300)
